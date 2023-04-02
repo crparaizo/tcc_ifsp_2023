@@ -1,0 +1,99 @@
+/* customização aplicada a todos os elementos da página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "open_sansbold", 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+/* customização do cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #17882c;
+}
+
+.logoIF {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+}
+
+.logoIF img {
+    width: 100px;
+    height: 100px;
+}
+
+.menu {
+    width: 50%;
+}
+
+.topnav {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.topnav a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    color: yellow;
+    text-decoration: underline;
+}
+
+/* customização do corpo da página */
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.tiposOndas_parte1,
+.tiposOndas_parte2 {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 50px 0;
+}
+
+#senoide,
+#quadrada,
+#triangular,
+#denteDeSerra {
+    width: 400px;
+    height: 200px;
+    border: 2px solid;
+    border-color: black;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-around;
+}
+
+.botoes input {
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+}
+
+/* customização do rodapé */
+
+.rodape {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #17882c;
+    color: white;
+    margin-top: 50px;
+}

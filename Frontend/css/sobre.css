@@ -1,0 +1,58 @@
+/* customização aplicada a todos os elementos da página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "open_sansbold", 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+/* customização do cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #17882c;
+}
+
+.logoIF {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+}
+
+.logoIF img {
+    width: 100px;
+    height: 100px;
+}
+
+.menu {
+    width: 50%;
+}
+
+.topnav {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.topnav a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    color: yellow;
+    text-decoration: underline;
+}
+
+/* customização do corpo da página */
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}

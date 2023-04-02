@@ -1,0 +1,104 @@
+/* customização aplicada a todos os elementos da página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "open_sansbold", 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+/* customização do cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #17882c;
+}
+
+.logoIF {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+}
+
+.logoIF img {
+    width: 100px;
+    height: 100px;
+}
+
+.menu {
+    width: 50%;
+}
+
+.topnav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.topnav a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    color: yellow;
+    text-decoration: underline;
+}
+
+/* customização do corpo da página */
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.conteudo div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+.conteudo div h2{
+    font-size: 17px; 
+}
+
+.conteudo div a{
+    text-decoration: none; 
+    list-style-type: none;
+}
+
+.conteudo div a li{
+    padding-top: 10px;   
+    justify-content: center;
+    display: flex;  
+}
+
+.conteudo div a li:hover{
+    text-decoration: underline; 
+    color: red; 
+}
+
+/* customização do rodapé */
+
+.rodape {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #17882c;
+    color: white;
+    margin-top: 30px;
+}
