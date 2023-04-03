@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', domloaded, false);
 function domloaded() {
 
     //Configurações do canvas
-    var canvas = document.getElementById("senoide");
+    var canvas = document.getElementById("grafico");
     var contexto = canvas.getContext("2d");
     contexto.beginPath();
     contexto.moveTo(0, 0);//ponto inicial
@@ -29,7 +29,7 @@ function domloaded() {
     //contexto.stroke(); //linha do gráfico
 
 
-    var canvas2 = document.getElementById("quadrada");
+    var canvas2 = document.getElementById("grafico");
     var ctx = canvas2.getContext("2d");
 
     ctx.fillStyle = "red";
@@ -42,7 +42,7 @@ function domloaded() {
     ctx.fillRect(80, 80, 75, 50);
 
     function DrawGrid() {
-        var canvas = document.getElementById("triangular");
+        var canvas = document.getElementById("grafico");
         var context = canvas.getContext("2d");
 
         //var LineStartX = CenterX - (width / 2);
@@ -51,7 +51,7 @@ function domloaded() {
         context.beginPath();
         context.moveTo(10, 20);
         context.lineTo(100, 20);
-        context.strokeStyle = "blue";
+        context.strokeStyle = "white";
         context.lineWidth = 1;
         context.stroke();
     }

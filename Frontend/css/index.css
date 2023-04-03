@@ -55,21 +55,18 @@ header {
     display: flex;
     justify-content: center;
     padding-top: 50px;
+    color: #2c66ce;
 }
 
-.tiposOndas_parte1,
-.tiposOndas_parte2 {
+.grafico {
     display: flex;
-    justify-content: space-evenly;
-    margin: 50px 0;
+    justify-content: center;
+    margin: 40px 0;
 }
 
-#senoide,
-#quadrada,
-#triangular,
-#denteDeSerra {
-    width: 400px;
-    height: 200px;
+#grafico {
+    width: 500px;
+    height: 250px;
     border: 2px solid;
     border-color: black;
 }
@@ -77,12 +74,22 @@ header {
 .botoes {
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 
 .botoes input {
     height: 50px;
     width: 50px;
     border-radius: 15px;
+    background-color: #cccccc;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.botoes input:hover{
+    box-shadow: 0px 15px 20px rgba(154,205,50, 0.4);
+    transform: translateY(-7px);
 }
 
 /* customização do rodapé */
@@ -95,5 +102,5 @@ header {
     height: 50px;
     background-color: #17882c;
     color: white;
-    margin-top: 50px;
+    margin-top: 40px;
 }

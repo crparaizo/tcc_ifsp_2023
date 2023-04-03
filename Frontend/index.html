@@ -33,65 +33,41 @@
 <body>
 
     <div class="titulo">
-        <h1>Osciloscópio Digital com ESP32</h1>
+        <h1>Sistema de Aquisição e Geração com ESP32</h1>
     </div>
 
     <!-- Limitações da tag canvas: alguns navegadores mais antigos 
         (em particular, versões do Internet Explorer anteriores a 9) 
         não suportam o elemento -->
 
-    <div class="tiposOndas">
+    <div class="main">
 
-        <div class="tiposOndas_parte1">
-
-            <div class="senoide">
-                <h2></h2>
-                <canvas id="senoide">
-                    <!-- Se seu navegador não suportar HTML5 você verá a mensagem abaixo -->
-                    Este navegor não suporta HTML5, não será possível visualizar esse gráfico
-                </canvas>
-            </div>
-            <div class="quadrada">
-                <h2></h2>
-                <canvas id="quadrada">
-                    <!-- Se seu navegador não suportar HTML5 você verá a mensagem abaixo -->
-                    Este navegor não suporta HTML5, não será possível visualizar esse gráfico
-                </canvas>
-            </div>
-        </div>
-
-        <div class="tiposOndas_parte2">
-
-            <div class="triangular">
-                <h2></h2>
-                <canvas id="triangular">
-                    <!-- Se seu navegador não suportar HTML5 você verá a mensagem abaixo -->
-                    Este navegor não suporta HTML5, não será possível visualizar esse gráfico
-                </canvas>
-            </div>
-            <div class="denteDeSerra">
-                <h2></h2>
-                <canvas id="denteDeSerra">
-                    <!-- Se seu navegador não suportar HTML5 você verá a mensagem abaixo -->
-                    Este navegor não suporta HTML5, não será possível visualizar esse gráfico
-                </canvas>
-            </div>
-
+        <div class="grafico">
+            <h2></h2>
+            <canvas id="grafico">
+                <!-- Se seu navegador não suportar HTML5 você verá a mensagem abaixo -->
+                Este navegor não suporta HTML5, não será possível visualizar esse gráfico
+            </canvas>
         </div>
 
     </div>
 
     <div class="botoes">
-        <input type="button" value="botao" />
-        <input type="button" value="botao" />
-        <input type="button" value="botao" />
-        <input type="button" value="botao" />
-        <input type="button" value="botao" />
-        <input type="button" value="botao" />
-        <input type="button" value="botao" />
-        <input type="button" value="botao" />
-        <input type="button" value="botao" />
-        <input type="button" value="botao" />
+        
+        <div class="superiores">
+            <input type="button" value="z-" />
+            <input type="button" value="Z+" />
+            <input type="button" value="TR-" />
+            <input type="button" value="TR+" />
+            <input type="button" value="DIV" />
+        </div>
+        <div class="inferiores">
+            <input type="button" value="A0" />
+            <input type="button" value="A1" />
+            <input type="button" value="Rising" />
+            <input type="button" value="Failing" />
+            <input type="button" value="Change" />
+        </div>
     </div>
 
 </body>

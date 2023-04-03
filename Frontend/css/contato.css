@@ -54,6 +54,7 @@ header {
     display: flex;
     justify-content: center;
     padding-top: 40px;
+    color: #2c66ce;
 }
 
 .conteudo {
