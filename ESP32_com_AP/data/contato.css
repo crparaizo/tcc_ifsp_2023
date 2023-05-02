@@ -11,7 +11,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 10px 0;
     background-color: #17882c;
 }
 
@@ -24,8 +24,8 @@ header {
 }
 
 .logoIF img {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
 }
 
 .menu {
@@ -102,4 +102,65 @@ header {
     background-color: #17882c;
     color: white;
     margin-top: 30px;
+}
+
+/* Aplicando responsividade de acordo com tamanho da tela */
+
+@media screen and (max-width: 1300px) {
+    
+    .logoIF h1 {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .logoIF h1 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .logoIF h1 {
+        font-size: 15px;
+    }
+
+    .topnav a{
+        font-size: 13px;    
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .titulo h1{
+        font-size: 20px;        
+    }    
+
+    .logoIF{
+        width: 150%;
+    }
+
+    .menu{
+        width: 40%;
+    }
+
+    .topnav {
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center;    
+    }
+
+    .topnav a{
+        font-size: 16px;   
+        padding-bottom: 4px; 
+    }
+
+    @media screen and (max-width: 415px) {  
+        
+        .logoIF img{
+            display: none;  
+        }  
+        
+    }
 }

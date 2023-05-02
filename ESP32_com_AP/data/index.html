@@ -8,15 +8,14 @@
     <title>ESP32</title>
 
     <!-- conexão com arquivo css -->
-    <link rel="stylesheet" href="css/index.css">
-    <!-- conexão com arquivo javascript -->
-    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="stylesheet" href="index.css">
+
 </head>
 
 <header>
 
     <div class="logoIF">
-        <img src="imagens/logo.png" alt="logo do Instituto Federal">
+        <img src="logo.png" alt="logo do Instituto Federal">
         <h1>Instituto Federal de São Paulo</h1>
     </div>
 
@@ -53,20 +52,20 @@
     </div>
 
     <div class="botoes">
-        
+
         <div class="superiores">
-            <input type="button" value="z-" />
-            <input type="button" value="Z+" />
-            <input type="button" value="TR-" />
-            <input type="button" value="TR+" />
-            <input type="button" value="DIV" />
+            <input type="button" value="z-" onclick="botaoZmenos()" />
+            <input type="button" value="Z+" onclick="botaoZmais()" />
+            <input type="button" value="TR-" onclick="botaoTRmenos()" />
+            <input type="button" value="TR+" onclick="botaoTRmais()" />
+            <input type="button" value="DIV" onclick="botaoDiv()" />
         </div>
         <div class="inferiores">
-            <input type="button" value="A0" />
-            <input type="button" value="A1" />
-            <input type="button" value="Rising" />
-            <input type="button" value="Failing" />
-            <input type="button" value="Change" />
+            <input type="button" value="A0" onclick="botaoA0()" />
+            <input type="button" value="A1" onclick="botaoA1()" />
+            <input type="button" value="Rising" onclick="botaoRising()" />
+            <input type="button" value="Failing" onclick="botaoFailing()" />
+            <input type="button" value="Change" onclick="botaoChange()" />
         </div>
     </div>
 
@@ -77,3 +76,7 @@
 </footer>
 
 </html>
+
+<!-- conexão com arquivo javascript -->
+<!-- está no final da página pois as funções devem esperar a página carregar completamente para depois executarem -->
+<script type="text/javascript" src="index.js"></script>

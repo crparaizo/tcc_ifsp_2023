@@ -58,3 +58,43 @@ function domloaded() {
 
     DrawGrid();
 }
+
+function botaoZmenos() {
+    alert("botaoZmenos");
+}
+
+function botaoZmais() {
+    alert("botaoZmais");
+}
+
+function botaoTRmenos() {
+    alert("botaoTRmenos");
+}
+
+function botaoTRmais() {
+    alert("botaoTRmais");
+}
+
+function botaoDiv() {
+    alert("botaoDiv");
+}
+
+function botaoA0() {
+    alert("botaoA0");
+}
+
+function botaoA1() {
+    alert("botaoA1");
+}
+
+function botaoRising() {
+    alert("botaoRising");
+}
+
+function botaoFailing() {
+    alert("botaoFailing");
+}
+
+function botaoChange() {
+    alert("botaoChange");
+}
