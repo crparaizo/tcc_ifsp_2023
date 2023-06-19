@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32</title>
+    <link rel="stylesheet" href="sobre.css">
+</head>
+
+<header>
+    <div class="logoIF">
+        <h1>Instituto Federal de São Paulo</h1>
+    </div>
+
+    <nav class="menu">
+        <div class="topnav">
+            <a class="active" href="http://192.168.4.1/">Home</a>
+            <a href="http://192.168.4.1/sobre">Sobre</a>
+            <a href="http://192.168.4.1/contato">Contato</a>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="titulo">
+        <h1>Sobre</h1>
+    </div>
+
+    <main class="conteudo">
+        <p>O osciloscópio é uma ferramenta de extrema importância para a indústria eletroeletrônica, pois ele permite
+            visualizar um sinal elétrico na forma de gráfico. Em outras palavras, é possível mostrar uma imagem em dois
+            eixos, no qual o eixo x representa o tempo e o eixo y representa os volts em amplitude. </p>
+
+        <p>O objetivo desse trabalho é desenvolver um sistema de aquisição de sinais com algumas funcionalidades
+            similares a de um osciloscópio. Com ele será possível fazer medições em diversos tipos de ambientes (já que
+            sua portabilidade é fácil), sua usabilidade é bem simples (tornando-se intuitiva), e poderá ser utilizado em
+            escolas e universidades. Devido ao seu baixo custo, tanto alunos como professores poderão construir o seu,
+            para uso pessoal, em pesquisas.</p>
+
+        <p>QUma das suas características notáveis é o peso que tem aproximadamente 250 g, isso facilitará no seu
+            manuseio evitando qualquer tipo de risco ergonômico para seu portador. O método de pesquisa desse trabalho
+            foi totalmente experimental, onde foi possível obter resultados satisfatórios que tornaram o projeto
+            promissor.</p>
+    </main>
+</body>
+
+<footer class="rodape">
+    <p>Elaborado em 2023</p>
+</footer>
+</html>
+
+<style>
+    /* customização aplicada a todos os elementos da página */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "open_sansbold", 'Open Sans', Arial, Helvetica, sans-serif;
+    }
+
+    /* customização do cabeçalho */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        background-color: #17882c;
+    }
+
+    .logoIF {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+    }
+
+    .menu {
+        width: 50%;
+    }
+
+    .topnav {
+        display: flex;
+        justify-content: space-around;
+
+    }
+
+    .topnav a {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    .topnav a:hover {
+        color: yellow;
+        text-decoration: underline;
+    }
+
+    /* customização do corpo da página */
+
+    .corpo {
+        padding: 150px 0;
+    }
+
+    .titulo {
+        display: flex;
+        justify-content: center;
+        padding-top: 100px;
+        color: #2c66ce;
+        font-size: 20px;
+    }
+
+    .conteudo {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        margin: 70px 20%;
+    }
+
+    .conteudo p {
+        padding: 20px 0;
+        font-size: 17px;
+        text-align: justify;
+    }
+
+    /* customização do rodapé */
+
+    .rodape {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        background-color: #17882c;
+        color: white;
+        margin-top: 45px;
+    }
+
+    /* Aplicando responsividade de acordo com tamanho da tela */
+
+    @media screen and (max-width: 1300px) {
+
+        .logoIF h1 {
+            font-size: 25px;
+        }
+
+    }
+
+    @media screen and (max-width: 1100px) {
+
+        .logoIF h1 {
+            font-size: 20px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .logoIF h1 {
+            font-size: 15px;
+        }
+
+        .topnav a {
+            font-size: 13px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+
+        .titulo h1 {
+            font-size: 20px;
+        }
+
+        .logoIF {
+            width: 150%;
+        }
+
+        .menu {
+            width: 40%;
+        }
+
+        .topnav {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .topnav a {
+            font-size: 16px;
+            padding-bottom: 4px;
+        }
+    }
+</style>

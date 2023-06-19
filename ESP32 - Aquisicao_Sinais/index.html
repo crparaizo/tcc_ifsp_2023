@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32</title>
+</head>
+
+<header>
+
+    <div class="logoIF">
+        <h1>Instituto Federal de São Paulo</h1>
+    </div>
+
+    <nav class="menu">
+        <div class="topnav">
+            <a class="active" href="http://192.168.4.1/">Home</a>
+            <a href="http://192.168.4.1/sobre">Sobre</a>
+            <a href="http://192.168.4.1/contato">Contato</a>
+        </div>
+    </nav>
+
+</header>
+
+<body>
+
+    <div class="titulo">
+        <h1>Sistema de Aquisição e Geração com ESP32</h1>
+    </div>
+
+    <!-- Limitações da tag canvas: alguns navegadores mais antigos 
+        (em particular, versões do Internet Explorer anteriores a 9) 
+        não suportam o elemento -->
+
+    <div class="main">
+
+        <div class="grafico">
+            <h2></h2>
+            <canvas id="grafico">
+                <!-- Se seu navegador não suportar HTML5 você verá a mensagem abaixo -->
+                Este navegor não suporta HTML5, não será possível visualizar esse gráfico
+            </canvas>
+            <div id="fundo_grafico"></div>
+        </div>
+
+        <div id="botoes">
+            <div class="frequencia">
+                <form id="formulario" action="frequencia" method="post">
+                    Tempo/DIV (ms): <input class="tempo_div" type="text" name="tempoNovo">
+                    <input type="submit" value="Atualizar">
+                </form>
+            </div>
+
+            <div class="acompanhamento">
+                <p>Tempo/DIV:</p>
+                <p>10</p>
+                <p>ms</p>
+            </div>
+
+            <div class="amplitude">
+                <p id="textoAmp">Tensão/DIV (volts):</p>
+                <button id="botaoAnteriorAmp" onclick="diminuirAmp()">-</button>
+                <input class="tensao_div" id="valorAmp" value="10">
+                <button id="botaoPosteriorAmp" onclick="aumentarAmp()">+</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+<footer class="rodape">
+    <p>Elaborado em 2023</p>
+</footer>
+
+</html>
+
+<style>
+    /* customização aplicada a todos os elementos da página */
+
+    @charset "UTF-8";
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "open_sansbold", 'Open Sans', Arial, Helvetica, sans-serif;
+    }
+
+    /* customização do cabeçalho */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        background-color: #17882c;
+    }
+
+    .logoIF {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+    }
+
+    .menu {
+        width: 50%;
+    }
+
+    .topnav {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .topnav a {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    .topnav a:hover {
+        color: yellow;
+        text-decoration: underline;
+    }
+
+    /* customização do corpo da página */
+
+    .titulo {
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        color: #2c66ce;
+    }
+
+    /* gráfico que mostra o sinal gerado */
+
+    .grafico {
+        display: flex;
+        justify-content: center;
+        margin: 15px 0;
+    }
+
+    #grafico {
+        width: 1000px;
+        height: 500px;
+        border: 2px solid;
+        border-color: black;
+    }
+
+    /* ---------------------------------------- */
+
+    /* gráfico que simula os aspectos da tela do osciloscopio */
+
+    #fundo_grafico {
+        background-color: transparent;
+        z-index: 2;
+        position: absolute;
+
+        background: rgba(255, 255, 255, 0.5);
+        background-image: linear-gradient(rgba(198, 147, 147, 0.5) .5px, transparent 5px),
+            linear-gradient(90deg, rgba(198, 147, 147, 0.5) .5px, transparent 5px);
+        background-size: 50px 50px;
+        /* --------------------------- */
+        width: 1000px;
+        height: 500px;
+        /* --------------------------- */
+    }
+
+    #canvasGrafico {
+        z-index: 1;
+        position: absolute;
+    }
+
+    main {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #formulario {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #botoes {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: space-around;
+    }
+
+    .amplitude button {
+        height: 2em;
+        width: 2em;
+    }
+
+    .tempo_div,
+    .tensao_div {
+        border-radius: 50px;
+        text-align: center;
+        margin: 7px 0;
+        width: 200px;
+        height: 25px;
+    }
+
+    /* ---------------------------------------- */
+
+    /* customização do rodapé */
+
+    .rodape {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        background-color: #17882c;
+        color: white;
+        margin-top: 40px;
+    }
+
+    /* Aplicando responsividade de acordo com tamanho da tela */
+
+    @media screen and (max-width: 1300px) {
+
+        .logoIF h1 {
+            font-size: 25px;
+        }
+    }
+
+    @media screen and (max-width: 1100px) {
+
+        .logoIF h1 {
+            font-size: 20px;
+        }
+
+        #grafico {
+            width: 800px;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+
+        #grafico {
+            width: 600px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .logoIF h1 {
+            font-size: 15px;
+        }
+
+        .topnav a {
+            font-size: 13px;
+        }
+
+        .titulo h1 {
+            font-size: 25px;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+
+        #grafico {
+            width: 500px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+
+        .titulo h1 {
+            font-size: 20px;
+        }
+
+        .logoIF {
+            width: 150%;
+        }
+
+        .menu {
+            width: 40%;
+        }
+
+        .topnav {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .topnav a {
+            font-size: 16px;
+            padding-bottom: 4px;
+        }
+
+        #grafico {
+            width: 400px;
+        }
+
+        @media screen and (max-width: 450px) {
+
+            .titulo h1 {
+                font-size: 15px;
+            }
+
+            #grafico {
+                width: 300px;
+            }
+        }
+
+        @media screen and (max-width: 415px) {
+
+            .titulo h1 {
+                text-align: center;
+            }
+
+            #grafico {
+                width: 250px;
+            }
+        }
+    }
+</style>
+
+<script>
+
+    //definições dos botões de mudar tensão/div
+    function aumentarAmp() {
+        var tensao_volts = document.getElementById("valorAmp").value;
+
+        if (tensao_volts == 2.5) tensao_volts = 5;
+        else if (tensao_volts == 5) tensao_volts = 10;
+
+        if (tensao_volts != 2.5) {
+            document.getElementById("botaoAnteriorAmp").style.visibility = "visible";
+        }
+        if (tensao_volts == 10) {
+            document.getElementById("botaoPosteriorAmp").style.visibility = "hidden";
+        }
+        document.getElementById("valorAmp").value = tensao_volts;
+    }
+
+    function diminuirAmp() {
+        var tensao_volts = document.getElementById("valorAmp").value;
+
+        if (tensao_volts == 5) tensao_volts = 2.5;
+        else if (tensao_volts == 10) tensao_volts = 5;
+
+        if (tensao_volts == 2.5) {
+            document.getElementById("botaoAnteriorAmp").style.visibility = "hidden";
+        }
+        if (tensao_volts != 10) {
+            document.getElementById("botaoPosteriorAmp").style.visibility = "visible";
+        }
+        document.getElementById("valorAmp").value = tensao_volts;
+    }
+
+    //Espera elemento canvas renderizar para depois executar o script
+    window.onload = function () {
+
+        //definições iniciais para o gráfico
+        var canvas = document.getElementById("grafico");
+        if (canvas) {
+
+            var altura = canvas.offsetHeight;  //altura da canvas        
+            var largura = canvas.offsetWidth; //largura da canvas        
+            var deslocHorizontal = 0; //posição horizontal inicial do gráfico        
+            var zeroGrafico = 20; //determina o 0 do gráfico, para melhorar vizualição do usuário
+            var voltagem;
+
+            //formatando a canvas
+            canvas.setAttribute("width", largura);
+            canvas.setAttribute("height", altura);
+
+            //obtendo o contexto 2d
+            var ctx = canvas.getContext("2d");
+            ctx.lineWidth = 3;
+
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, largura, altura);
+            ctx.font = "30px Courier";
+        }
+
+        //variavel que controla amplitude do grafico
+        var fatorDivisao = 1;
+
+        // atualizar valores a cada 50ms     
+        setInterval(function () {
+            pegarTexto();
+        }, 10);
+
+        //criando sincronismo entre as funções
+        var pegouTexto = false;
+
+        //função feita com AJAX que pegar texto do Placeholder
+        //Formato é "Plain text"
+        function pegarTexto() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                //se chamada ajax foi concluida (4) e status for ok (200)
+                if (this.readyState == 4 && this.status == 200) {
+                    var vetor = document.getElementById("placeholder")
+                    vetor = this.responseText;
+                    var json = JSON.parse(vetor);
+                    pegouTexto = true;
+                    desenharGrafico(json);
+                }
+            };
+
+            xhttp.open("GET", "texto", true);
+            xhttp.send();
+        }
+
+
+        //função desenharGrafico
+        function desenharGrafico(json) {
+
+            //condições a depender do tensao/div escolhido:
+            var valorTensao = document.getElementById("valorAmp").value;
+
+            if (valorTensao == 2.5) {
+                fatorDivisao = 4;
+
+            } else if (valorTensao == 5) {
+                fatorDivisao = 2;
+
+            } else if (valorTensao == 10) {
+                fatorDivisao = 1;
+            }
+
+            if ((pegouTexto == true)) {
+
+                //caso deslocamento do eixo horizontal for maior que a largura do grafico, eixo volta para posição 0   ~/
+                if (deslocHorizontal >= largura) {
+
+                    //onde começa x, onde termina y, tamanho dele (largura e altura): 
+                    ctx.clearRect(0, 0, 1, altura); //apagar iniciao do grafico
+                    ctx.fillStyle = "white";
+                    ctx.fillRect(0, 0, 1, altura); //reconstruir inicio do grafico
+                    deslocHorizontal = 0; //deslocamento horizontal vou para inicio do grafico
+
+                    ctx.beginPath();
+                }
+
+                for (let valorJson in json) {
+
+                    //exibe valores no Console do navegador - para debug
+
+                    ctx.clearRect(0, 0, deslocHorizontal + 1, altura);
+                    ctx.fillStyle = "white";
+                    ctx.fillRect(0, 0, deslocHorizontal + 1, altura);
+
+                    voltagem = - ((json[valorJson] * (3.3 / 4095)) * (20 / 3) - 10) / fatorDivisao;
+                    parsedValue = parseFloat(voltagem);
+                    resultado = parsedValue.toFixed(2);
+                    //console.log(resultado);
+
+                    deslocHorizontal += 1; //deslocamento na horizontal            
+                    ctx.lineTo(deslocHorizontal, altura - valorEP32 - zeroGrafico); //desenha uma linha até a posição gerada
+                    ctx.strokeStyle = "magenta";
+                    ctx.stroke();
+                    //desenha um retangulo onde está sendo escrito o valor do gráfico
+                    ctx.fillStyle = "white";
+                    ctx.fillRect(0, 0, largura, 30);
+                    //desenha o texto indicando o valor do gráfico, na posição horizontal atual
+                    ctx.fillStyle = "black";
+                    ctx.fillText(resultado + "V", 450, 30);
+                }
+            }
+            pegouTexto = false;
+        }
+    };
+
+</script>
