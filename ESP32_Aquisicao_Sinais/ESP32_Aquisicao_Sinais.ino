@@ -36,8 +36,8 @@ int valoresAnalog_capturados[quantValoresCapturados];
 // valores serão inseridos dentro de uma string
 String valores = "";
 String voltagem = "";
-int tempoCapturaValores = 10; //delayMicroseconds
-int novo_tempoCapturaValores = 0;
+float tempoCapturaValores = 10; //delayMicroseconds
+float novo_tempoCapturaValores = 0;
 
 
 //--------------------------------------------------------
@@ -110,7 +110,7 @@ void nao_encontrado()
 //Tempo/DIV
 void capturaTempo (){ //define novo valor de delay na captura de valores
   String tempo = server.arg("tempoNovo"); //captura variavel do html_index
-  novo_tempoCapturaValores = tempo.toInt();
+  novo_tempoCapturaValores = tempo.toFloat();
   //Serial.println(tempoNovo);
   server.sendHeader("Location","/"); //redirecina para página default
   server.send(302, "text/plain", "redirecionado");
@@ -142,7 +142,6 @@ void setup()
   server.on("/", pag_index);
   server.on("/sobre", pag_sobre);
   server.on("/contato", pag_contato);
-  //server.on("/debug", valores_Debug);
   server.on("/texto", valores_Debug);
 
   server.on("/frequencia", capturaTempo);  

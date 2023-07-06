@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32</title>
+    <link rel="stylesheet" href="contato.css">
+</head>
+
+<header>
+
+    <div class="logoIF">
+        <img src="imagens/logo.png" alt="logo do Instituto Federal">
+        <h1>Instituto Federal de São Paulo</h1>
+    </div>
+
+    <nav class="menu">
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="#">Contato</a>
+        </div>
+    </nav>
+
+</header>
+
+<body>
+    <div class="titulo">
+        <h1>Contato</h1>
+    </div>
+    <main class="conteudo">
+        <div>
+            <h2>Alunos</h2>
+            <ul>
+                <a href="https://www.linkedin.com/in/bruno-vinicius-81a3181b1/">
+                    <li>Bruno Vinicius Lima da Silva</li>
+                </a>
+                <a href="https://www.linkedin.com/in/crparaizo/">
+                    <li>Cândida Rosa Paraizo</li>
+                </a>
+                <a href="https://www.linkedin.com/in/marcos-knijnik-70244748/">
+                    <li>Marcos Judensnaider Knijnik</li>
+                </a>
+            </ul>
+        </div>
+        <div>
+            <h2>Professores</h2>
+            <ul>
+                <a href="#">
+                    <li>Gustavo Neves Margarido</li>
+                </a>
+                <a href="#">
+                    <li>Rodrigo Rech</li>
+                </a>
+                <a href="#">
+                    <li>Tarsício Fernandes Leão</li>
+                </a>
+            </ul>
+        </div>
+        <div>
+            <h2>Instituição</h2>
+            <a href="https://www.ifsp.edu.br/">
+                <li>Instituto Federal de São Paulo</li>
+            </a>
+        </div>
+        <div>
+            <h2>Links do projeto</h2>
+            <ul>
+                <a href="https://github.com/crparaizo/tcc_ifsp_2023">
+                    <li>Repositório Github</li>
+                </a>
+            </ul>
+        </div>
+    </main>
+</body>
+
+<footer class="rodape">
+    <p>Elaborado em 2023</p>
+</footer>
+
+</html>
+
+<style>
+    /* customização aplicada a todos os elementos da página */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "open_sansbold", 'Open Sans', Arial, Helvetica, sans-serif;
+    }
+
+    /* customização do cabeçalho */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        background-color: #17882c;
+    }
+
+    .logoIF {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+    }
+
+    .logoIF img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .menu {
+        width: 50%;
+    }
+
+    .topnav {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .topnav a {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    .topnav a:hover {
+        color: yellow;
+        text-decoration: underline;
+    }
+
+    /* customização do corpo da página */
+
+    .titulo {
+        display: flex;
+        justify-content: center;
+        padding-top: 40px;
+        color: #2c66ce;
+    }
+
+    .conteudo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .conteudo div {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin: 15px;
+    }
+
+    .conteudo div h2 {
+        font-size: 17px;
+    }
+
+    .conteudo div a {
+        text-decoration: none;
+        list-style-type: none;
+    }
+
+    .conteudo div a li {
+        padding-top: 10px;
+        justify-content: center;
+        display: flex;
+    }
+
+    .conteudo div a li:hover {
+        text-decoration: underline;
+        color: red;
+    }
+
+    /* customização do rodapé */
+
+    .rodape {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        background-color: #17882c;
+        color: white;
+        margin-top: 30px;
+    }
+
+    /* Aplicando responsividade de acordo com tamanho da tela */
+
+    @media screen and (max-width: 1300px) {
+
+        .logoIF h1 {
+            font-size: 25px;
+        }
+    }
+
+    @media screen and (max-width: 1100px) {
+
+        .logoIF h1 {
+            font-size: 20px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .logoIF h1 {
+            font-size: 15px;
+        }
+
+        .topnav a {
+            font-size: 13px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+
+        .titulo h1 {
+            font-size: 20px;
+        }
+
+        .logoIF {
+            width: 150%;
+        }
+
+        .menu {
+            width: 40%;
+        }
+
+        .topnav {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .topnav a {
+            font-size: 16px;
+            padding-bottom: 4px;
+        }
+
+        @media screen and (max-width: 415px) {
+
+            .logoIF img {
+                display: none;
+            }
+
+        }
+    }
+</style>

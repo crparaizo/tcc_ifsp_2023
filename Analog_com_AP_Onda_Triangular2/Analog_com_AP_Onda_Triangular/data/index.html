@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32</title>
+</head>
+
+<body>
+
+  <p id="placeholder">%PLACEHOLDER%</p>
+
+  <canvas id="canvasGrafico">Seu browser não suporta o elemento canvas</canvas>
+
+  <div id="fundo_grafico"></div>
+
+  <div id="botoes">
+
+    <div>
+      <p id="textoFreq">Frequência (Tempo / DIV) em ms</p>
+      <button id="botaoAnteriorFreq" onclick="diminuirFreq()">-</button>
+      <input id="valorFreq" value="40">
+      <button id="botaoPosteriorFreq" onclick="aumentarFreq()">+</button>
+    </div>
+
+    <div>
+      <p id="textoAmp">Amplitude (Tensão / DIV) em volts</p>
+      <button id="botaoAnteriorAmp" onclick="diminuirAmp()">-</button>
+      <input id="valorAmp" value="10">
+      <button id="botaoPosteriorAmp" onclick="aumentarAmp()">+</button>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
+
+<script type="text/javascript" src="index.js"></script>
+
+<style>
+  #fundo_grafico {
+    background-color: transparent;
+    z-index: 2;
+    position: absolute;
+
+    background: rgba(255, 255, 255, 0.5);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5) .5px, transparent 5px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.5) .5px, transparent 5px);
+    background-size: 50px 50px;
+
+    /* AVISO: dps trocar valor fixo de largura e altura por variavel a depender dos parametros do grafico */
+    /* --------------------------- */
+    width: 700px;
+    height: 500px;
+    /* --------------------------- */
+
+  }
+
+  #canvasGrafico {
+    z-index: 1;
+    position: absolute;
+  }
+
+  #botoes {
+    padding-top: 33em;
+  }
+</style>
+
+<!-- 
+https://getbutterfly.com/javascript-canvas-sine-wave/
+https://stackoverflow.com/questions/64036318/how-to-visualize-a-sine-wave-with-custom-frequency-and-amplitude
+https://web.dev/canvas-performance/
+
+https://davidmatthew.ie/creating-an-oscilloscope-with-javascript/
+
+//https://alvarotrigo.com/blog/javascript-select-option/
+ -->

@@ -1,4 +1,4 @@
-String html_index(String dado,int tempo)
+String html_index(String dado,float tempo)
 {
 
   String conteudo; // variável que armazenará o script HTML
@@ -34,7 +34,7 @@ String html_index(String dado,int tempo)
 "<body>\n" 
 
     "<div class=\"titulo\">\n" 
-        "<h1>Sistema de Aquisição e Geração com ESP32</h1>\n" 
+        "<h1>Sistema de Aquisição de Sinais com ESP32</h1>\n" 
     "</div>\n" 
 
     "<!-- Limitações da tag canvas: alguns navegadores mais antigos"
@@ -54,16 +54,20 @@ String html_index(String dado,int tempo)
         "<div id=\"botoes\">\n" 
             "<div class=\"frequencia\">\n" 
                 "<form id=\"formulario\" action=\"frequencia\" method=\"post\">\n" 
-                    "Tempo/DIV (ms): <input class=\"tempo_div\" type=\"text\" name=\"tempoNovo\">\n" 
+                    "Tempo de coleta(us): <input class=\"tempo_div\" type=\"text\" name=\"tempoNovo\">\n" 
                     "<input type=\"submit\" value=\"Atualizar\">\n" 
                 "</form>\n" 
             "</div>\n" 
 
             "<div class=\"acompanhamento\">\n" 
             );
-         conteudo += F("<p>Tempo/DIV:");
+         conteudo += F("<p>Tempo de coleta:");
          conteudo += tempo;
-         conteudo += F("ms</p>\n");
+         conteudo += F("us</p>\n");
+
+         conteudo += F("<p>Tempo/DIV:");
+         conteudo += tempo*50;
+         conteudo += F("us</p>\n");
   
          conteudo += F( 
             "</div>\n" 
@@ -216,6 +220,10 @@ String html_index(String dado,int tempo)
         "width: 200px;\n" 
         "height: 25px;\n" 
     "}\n" 
+
+    "#botaoPosteriorAmp{\n"
+        "visibility: hidden;\n"
+    "}\n"
 
     /* ---------------------------------------- */
 
@@ -400,7 +408,7 @@ String html_index(String dado,int tempo)
         // atualizar valores a cada 50ms     
         "setInterval(function () {\n" 
             "pegarTexto();\n" 
-        "}, 10);\n" 
+        "}, 1);\n" 
 
         //criando sincronismo entre as funções
         "var pegouTexto = false;\n" 

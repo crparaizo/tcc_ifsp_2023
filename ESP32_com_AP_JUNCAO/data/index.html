@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32</title>
+</head>
+
+<header>
+
+    <div class="logoIF">
+        <img src="logo.png" alt="logo do Instituto Federal">
+        <h1>Instituto Federal de São Paulo</h1>
+    </div>
+
+    <nav class="menu">
+        <div class="topnav">
+            <a class="active" href="#">Home</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="contato.html">Contato</a>
+        </div>
+    </nav>
+
+</header>
+
+<body>
+
+    <div class="titulo">
+        <h1>Sistema de Aquisição e Geração com ESP32</h1>
+    </div>
+
+    <!-- Limitações da tag canvas: alguns navegadores mais antigos 
+        (em particular, versões do Internet Explorer anteriores a 9) 
+        não suportam o elemento -->
+
+    <div class="main">
+
+        <div class="grafico">
+            <h2></h2>
+            <canvas id="grafico">
+                <!-- Se seu navegador não suportar HTML5 você verá a mensagem abaixo -->
+                Este navegor não suporta HTML5, não será possível visualizar esse gráfico
+            </canvas>
+        </div>
+
+    </div>
+
+    <div class="botoes">
+
+        <div class="superiores">
+            <input type="button" value="z-" onclick="botaoZmenos()" />
+            <input type="button" value="Z+" onclick="botaoZmais()" />
+            <input type="button" value="TR-" onclick="botaoTRmenos()" />
+            <input type="button" value="TR+" onclick="botaoTRmais()" />
+            <input type="button" value="DIV" onclick="botaoDiv()" />
+        </div>
+        <div class="inferiores">
+            <input type="button" value="A0" onclick="botaoA0()" />
+            <input type="button" value="A1" onclick="botaoA1()" />
+            <input type="button" value="Rising" onclick="botaoRising()" />
+            <input type="button" value="Failing" onclick="botaoFailing()" />
+            <input type="button" value="Change" onclick="botaoChange()" />
+        </div>
+    </div>
+
+</body>
+
+<footer class="rodape">
+    <p>Elaborado em 2023</p>
+</footer>
+
+</html>
+
+<style>
+    /* customização aplicada a todos os elementos da página */
+
+    @charset "UTF-8";
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "open_sansbold", 'Open Sans', Arial, Helvetica, sans-serif;
+    }
+
+    /* customização do cabeçalho */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        background-color: #17882c;
+    }
+
+    .logoIF {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+    }
+
+    .logoIF img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .menu {
+        width: 50%;
+    }
+
+    .topnav {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .topnav a {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    .topnav a:hover {
+        color: yellow;
+        text-decoration: underline;
+    }
+
+    /* customização do corpo da página */
+
+    .titulo {
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        color: #2c66ce;
+    }
+
+    .grafico {
+        display: flex;
+        justify-content: center;
+        margin: 40px 0;
+    }
+
+    #grafico {
+        width: 500px;
+        height: 250px;
+        border: 2px solid;
+        border-color: black;
+    }
+
+    .botoes {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .botoes input {
+        height: 50px;
+        width: 50px;
+        border-radius: 15px;
+        background-color: #cccccc;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .botoes input:hover {
+        box-shadow: 0px 15px 20px rgba(154, 205, 50, 0.4);
+        transform: translateY(-7px);
+    }
+
+    /* customização do rodapé */
+
+    .rodape {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        background-color: #17882c;
+        color: white;
+        margin-top: 40px;
+    }
+
+    /* Aplicando responsividade de acordo com tamanho da tela */
+
+    @media screen and (max-width: 1300px) {
+
+        .logoIF h1 {
+            font-size: 25px;
+        }
+    }
+
+    @media screen and (max-width: 1100px) {
+
+        .logoIF h1 {
+            font-size: 20px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .logoIF h1 {
+            font-size: 15px;
+        }
+
+        .topnav a {
+            font-size: 13px;
+        }
+
+        .titulo h1 {
+            font-size: 25px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+
+        .titulo h1 {
+            font-size: 20px;
+        }
+
+        .logoIF {
+            width: 150%;
+        }
+
+        .menu {
+            width: 40%;
+        }
+
+        .topnav {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .topnav a {
+            font-size: 16px;
+            padding-bottom: 4px;
+        }
+
+        #grafico {
+            width: 400px;
+        }
+
+        @media screen and (max-width: 450px) {
+
+            .titulo h1 {
+                font-size: 15px;
+            }
+
+            #grafico {
+                width: 300px;
+            }
+        }
+
+        @media screen and (max-width: 415px) {
+
+            .logoIF img {
+                display: none;
+            }
+
+            .titulo h1 {
+                text-align: center;
+            }
+
+            #grafico {
+                width: 250px;
+            }
+        }
+    }
+</style>
+
+<script>
+
+    //Espera elemento canvas renderizar para depois executar o script
+    document.addEventListener('DOMContentLoaded', domloaded, false);
+    function domloaded() {
+
+        //Configurações do canvas
+        var canvas = document.getElementById("grafico");
+        var contexto = canvas.getContext("2d");
+        contexto.beginPath();
+        contexto.moveTo(0, 0);//ponto inicial
+        //próximos pontos
+        contexto.lineTo(355, 55);
+        contexto.lineTo(355, 125);
+        contexto.lineTo(25, 125);
+        contexto.moveTo(465, 25);
+        contexto.fill(); //preenchimento do gráfico
+        //contexto.stroke(); //linha do gráfico
+
+        var canvas2 = document.getElementById("grafico");
+        var ctx = canvas2.getContext("2d");
+
+        ctx.fillStyle = "red";
+        ctx.fillRect(20, 20, 75, 50);
+        //Turn transparency on
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle = "blue";
+        ctx.fillRect(50, 50, 75, 50);
+        ctx.fillStyle = "green";
+        ctx.fillRect(80, 80, 75, 50);
+
+        function DrawGrid() {
+            var canvas = document.getElementById("grafico");
+            var context = canvas.getContext("2d");
+
+            //var LineStartX = CenterX - (width / 2);
+            // var LineStartY = CenterY - (height / 2);
+
+            context.beginPath();
+            context.moveTo(10, 20);
+            context.lineTo(100, 20);
+            context.strokeStyle = "white";
+            context.lineWidth = 1;
+            context.stroke();
+        }
+
+        DrawGrid();
+    }
+
+    function botaoZmenos() {
+        alert("botaoZmenos");
+    }
+
+    function botaoZmais() {
+        alert("botaoZmais");
+    }
+
+    function botaoTRmenos() {
+        alert("botaoTRmenos");
+    }
+
+    function botaoTRmais() {
+        alert("botaoTRmais");
+    }
+
+    function botaoDiv() {
+        alert("botaoDiv");
+    }
+
+    function botaoA0() {
+        alert("botaoA0");
+    }
+
+    function botaoA1() {
+        alert("botaoA1");
+    }
+
+    function botaoRising() {
+        alert("botaoRising");
+    }
+
+    function botaoFailing() {
+        alert("botaoFailing");
+    }
+
+    function botaoChange() {
+        alert("botaoChange");
+    }
+
+</script>
